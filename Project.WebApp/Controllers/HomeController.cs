@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Project.WebApp.Models;
+using Project.WebApp.Tools;
 
 namespace Project.WebApp.Controllers
 {
@@ -41,7 +42,19 @@ namespace Project.WebApp.Controllers
         [HttpPost]
         public ActionResult Contact(ContactModel model)
         {
-            #region CheckGoogleRecaptcha
+
+            #region GoogleControl
+            var response = Request["g-recaptcha-response"];
+            ReCaptchaModel googleresult = ReCaptcha.Check(response);
+            if (!googleresult.Result)
+            {
+                return Json(new // returning json value to process result
+                {
+                    data =googleresult.Message,
+                    success = false,
+                }, JsonRequestBehavior.AllowGet);
+
+            }
             #endregion
 
             if (!ModelState.IsValid)

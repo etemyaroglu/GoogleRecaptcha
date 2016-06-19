@@ -3,7 +3,10 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@section HeadScript
+{
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+}
 <h2>Index</h2>
 
 
@@ -60,7 +63,7 @@
             Google Recaptcha
             <div class="col-md-10">
 
-                <div id="formCode"></div>
+                <div class="g-recaptcha" data-sitekey="6Lf3TiITAAAAAFED36Nes9MRKezhZEIqLEFLc-Rp"></div>
 
             </div>
         </div>
@@ -79,9 +82,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(window).load(function () {
-            onloadCallback("FormCode");
-        });
-    </script>
+ 
 }

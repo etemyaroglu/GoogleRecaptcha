@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
+@section HeadScript{
+    <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
+}
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
@@ -25,8 +28,8 @@
 {
     <script>
             $(window).load(function () {
-                onloadCallback("FormCode1");
-                onloadCallback("FormCode2");
+                onloadCallback("formCode1");
+                onloadCallback("formCode2");
             });
 </script>
 }
