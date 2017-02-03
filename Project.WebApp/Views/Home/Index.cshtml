@@ -1,86 +1,60 @@
 ﻿@model Project.WebApp.Models.ContactModel
-
-@{
-    ViewBag.Title = "Index";
-}
-@section HeadScript
-{
+@section Head{
     <script src='https://www.google.com/recaptcha/api.js'></script>
 }
-<h2>Index</h2>
-
-
-@using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { id = "FormCode" }))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>ContactModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirtName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirtName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirtName, "", new { @class = "text-danger" })
+<div id="fh5co-contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+                <h3>Lorem ipsum dolor sit amet</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+        @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { id = "FormCode" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row animate-box">
+                <div class="col-md-6">
+                    <h3 class="section-title">Lorem Ipsum</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    
+                    <ul class="contact-info">
+                        <li><i class="icon-location-pin"></i>#</li>
+                        <li><i class="icon-phone2"></i>+90 507 099 9678</li>
+                        <li><i class="icon-mail"></i><a href="#">etemyaroglu@gmail.com</a></li>
+                        <li><i class="icon-globe2"></i><a href="http://www.etemyaroglu.com/" target="_blank">www.etemyaroglu.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">                                
+                                @Html.TextBoxFor(model => model.FirtName, new { @class= "form-control" , placeholder = "Your Name" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">                                
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "E-Mail" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">                                
+                                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", cols = "30", rows = "7", placeholder = "Message" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="g-recaptcha" data-sitekey="6Lf3TiITAAAAAFED36Nes9MRKezhZEIqLEFLc-Rp"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="submit" value="Send Message" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gsm, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gsm, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Gsm, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        
-        <div class="form-group">
-            Google Recaptcha
-            <div class="col-md-10">
-
-                <div class="g-recaptcha" data-sitekey="6Lf3TiITAAAAAFED36Nes9MRKezhZEIqLEFLc-Rp"></div>
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+        }
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
- 
-}
