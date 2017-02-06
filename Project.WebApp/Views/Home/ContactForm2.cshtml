@@ -1,74 +1,35 @@
 ﻿@model Project.WebApp.Models.ContactModel
-@{
-    Layout = null;
-}
-
-@using (Html.BeginForm("Contact","Home",FormMethod.Post,new {id="Form2"}))
+@{Layout = null;}
+@using (Html.BeginForm("FormPost", "Home", FormMethod.Post, new { id = "FormCode2" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ContactModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirtName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirtName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirtName, "", new { @class = "text-danger" })
+    <div class="col-md-6">
+        <h3 class="section-title">Form 2</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.FirtName, new { @class = "form-control", placeholder = "Your Name" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "E-Mail" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Gsm, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Gsm, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Gsm, "", new { @class = "text-danger" })
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.TextAreaFor(model => model.Message, new { @class = "form-control", cols = "30", rows = "7", placeholder = "Message" })
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="g-recaptcha" id="FormCode2Captcha"></div>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            Google Recaptcha
-            <div class="col-md-10">
-                
-                <div id="formCode2"></div>
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-12">
+                <div class="form-group"><input type="submit" value="Send Message" class="btn btn-primary"></div>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 

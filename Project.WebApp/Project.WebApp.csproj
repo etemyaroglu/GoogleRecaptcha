@@ -225,8 +225,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ContactForm1.cshtml" />
     <Content Include="Views\Home\ContactForm2.cshtml" />
@@ -332,6 +330,7 @@
     <Content Include="Content\sass\_bootstrap-mincer.scss" />
     <Content Include="Content\sass\_bootstrap-sprockets.scss" />
     <None Include="Project_Readme.html" />
+    <Content Include="Views\Home\MultiForm.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

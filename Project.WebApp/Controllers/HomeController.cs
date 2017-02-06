@@ -15,20 +15,10 @@ namespace Project.WebApp.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application descriptioni page.";
-
+        public ActionResult MultiForm()
+        {            
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         public PartialViewResult ContactForm1()
         {
             return PartialView();
@@ -40,15 +30,15 @@ namespace Project.WebApp.Controllers
 
         #region HttpPost Methods
         [HttpPost]
-        public ActionResult Contact(ContactModel model)
+        [ValidateAntiForgeryToken]
+        public ActionResult FormPost(ContactModel model)
         {
-
             #region GoogleControl
             var response = Request["g-recaptcha-response"];
             ReCaptchaModel googleresult = ReCaptcha.Check(response);
             if (!googleresult.Result)
             {
-                return Json(new // returning json value to process result
+                return Json(new
                 {
                     data =googleresult.Message,
                     success = false,
@@ -65,8 +55,5 @@ namespace Project.WebApp.Controllers
             return View();
         }
         #endregion
-
-
-
     }
 }

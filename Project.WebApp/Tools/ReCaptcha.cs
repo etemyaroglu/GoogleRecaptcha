@@ -11,18 +11,12 @@ namespace Project.WebApp.Tools
     public static class ReCaptcha
     {
         public static ReCaptchaModel Check(string response)
-        {
-            //secret that was generated in key value pair
+        {           
             ReCaptchaModel result = new ReCaptchaModel();
-            const string secret = "6LdD5yETAAAAABQZZUt_-J0zst7NXzda6poyKwp6";//This must be a unique key for each project.
+            const string secret = "your secret key here";
             var client = new WebClient();
-            var reply =
-                client.DownloadString(
-                    string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
-
-            var captchaResponse = JsonConvert.DeserializeObject<ReCaptchaModel>(reply);
-
-            //when response is false check for the error message
+            var reply =client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
+            var captchaResponse = JsonConvert.DeserializeObject<ReCaptchaModel>(reply);           
             if (!captchaResponse.Success)
             {
                 if (captchaResponse.ErrorCodes.Count <= 0)
@@ -31,7 +25,6 @@ namespace Project.WebApp.Tools
                     captchaResponse.Message = "Error occured. Please try again";
                     return captchaResponse;
                 }
-
                 var error = captchaResponse.ErrorCodes[0].ToLower();
                 switch (error)
                 {
@@ -56,7 +49,6 @@ namespace Project.WebApp.Tools
                         captchaResponse.Message = "Error occured. Please try again";
                         break;
                 }
-
             }
             else
             {
@@ -64,7 +56,6 @@ namespace Project.WebApp.Tools
                 captchaResponse.Message = "Success";
             }
             return captchaResponse;
-        }
-        
+        }        
     }
 }
