@@ -13,7 +13,7 @@ namespace Project.WebApp.Tools
         public static ReCaptchaModel Check(string response)
         {           
             ReCaptchaModel result = new ReCaptchaModel();
-            const string secret = "your secret key here";
+            const string secret = "your secret key here.";
             var client = new WebClient();
             var reply =client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
             var captchaResponse = JsonConvert.DeserializeObject<ReCaptchaModel>(reply);           
